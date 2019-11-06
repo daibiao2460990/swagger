@@ -1,0 +1,224 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "bi前端接口"
+  },
+  "host": "192.168.1.201",
+  "basePath": "/appdemo",
+  "tags": [
+    {
+      "name": "company",
+      "description": "公司管理"
+    },
+    {
+      "name": "user",
+      "description": "用户管理"
+    },
+    {
+      "name": "auth",
+      "description": "用户安全"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/bi/company/login/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "系统管理员登陆",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user_credentials",
+            "description": "用户凭证",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCredentials"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/company/logout/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "系统管理员登出",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/company/product/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "获取产品列表",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/ProductList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/create/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "新增公司",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "company_detail",
+            "description": "公司明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CompanyDetail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserCredentials": {
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "CompanyDetail": {
+      "type": "object",
+      "properties": {
+        "company_name": {
+          "type": "string",
+          "description": "公司名称"
+        },
+        "abbr_name": {
+          "type": "string",
+          "description": "公司简称"
+        },
+        "user_name": {
+          "type": "string",
+          "description": "管理员用户名"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "管理员电邮"
+        },
+        "product_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CompanyPurchased"
+          }
+        }
+      }
+    },
+    "CompanyPurchased": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "template_id": {
+          "type": "integer",
+          "description": "模板编号"
+        },
+        "days": {
+          "type": "integer",
+          "description": "购买天数"
+        }
+      }
+    },
+    "ProductList": {
+      "type": "object",
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "产品名称"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `0` - '即将上线'\n * `1` - '正常'\n * `2` - '已下线'\n",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ]
+        }
+      }
+    }
+  }
+}
