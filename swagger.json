@@ -81,7 +81,7 @@
         "tags": [
           "company"
         ],
-        "summary": "获取产品列表",
+        "summary": "获取公司产品列表",
         "description": "",
         "produces": [
           "application/json"
@@ -90,7 +90,7 @@
           "200": {
             "description": "success",
             "schema": {
-              "$ref": "#/definitions/ProductList"
+              "$ref": "#/definitions/CompanyProductList"
             }
           }
         }
@@ -123,6 +123,26 @@
         "responses": {
           "200": {
             "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/user/product/": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取用户产品列表",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/UserProductList"
+            }
           }
         }
       }
@@ -187,18 +207,18 @@
         }
       }
     },
-    "ProductList": {
+    "CompanyProductList": {
       "type": "object",
       "properties": {
         "product_list": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Product"
+            "$ref": "#/definitions/CompanyProduct"
           }
         }
       }
     },
-    "Product": {
+    "CompanyProduct": {
       "type": "object",
       "properties": {
         "product_id": {
@@ -217,6 +237,42 @@
             "1",
             "2"
           ]
+        }
+      }
+    },
+    "UserProductList": {
+      "type": "object",
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserProduct"
+          }
+        }
+      }
+    },
+    "UserProduct": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "产品名称"
+        },
+        "role_type_list": {
+          "type": "array",
+          "description": "角色类型列表",
+          "items": {
+            "type": "string",
+            "enum": [
+              "CREATOR",
+              "EXPLORER",
+              "VIEWER"
+            ]
+          }
         }
       }
     }
