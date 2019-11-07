@@ -260,7 +260,7 @@
         },
         "role_type_list": {
           "type": "array",
-          "description": "角色类型列表1",
+          "description": "角色类型列表",
           "items": {
             "type": "string",
             "enum": [
