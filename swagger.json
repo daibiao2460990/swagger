@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "title": "bi前端接口"
   },
-  "host": "192.168.1.221",
+  "host": "192.168.1.201",
   "basePath": "/appdemo",
   "tags": [
     {
@@ -14,6 +14,10 @@
     {
       "name": "user",
       "description": "用户管理"
+    },
+    {
+      "name": "auth",
+      "description": "用户安全"
     }
   ],
   "schemes": [
@@ -72,6 +76,303 @@
         }
       }
     },
+    "/bi/company/product/role-type/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "获取角色类型列表",
+        "description": "后续开发",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_id",
+            "description": "产品编号",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/ProductId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/ProductRoleTypeList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/role/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "获取角色列表",
+        "description": "后续开发",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_id",
+            "description": "产品编号",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RoleList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/role/authority/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "获取角色及权限",
+        "description": "后续开发",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "role_id",
+            "description": "角色编号",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RoleId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/AuthList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/add/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "新增产品",
+        "description": "后续开发",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_detail",
+            "description": "产品明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/CompanyProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/ProductId"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/mod/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "修改产品",
+        "description": "后续开发",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_detail",
+            "description": "产品明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CompanyProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/ProductId"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/template/add/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "新增产品模板",
+        "description": "template_id参数不填写",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_template_detail",
+            "description": "产品模板明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/ProductTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/TemplateId"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/template/mod/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "修改产品模板",
+        "description": "product_id参数不填写",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_template_detail",
+            "description": "产品模板明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/ProductTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/TemplateId"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/role/authority/add/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "新增角色及权限",
+        "description": "role_id参数不填写",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "role_auth_detail",
+            "description": "角色权限明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RoleAndAuthority"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RoleId"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/role/authority/mod/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "修改角色及权限",
+        "description": "product_id参数不填写",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "role_auth_detail",
+            "description": "角色权限明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/RoleAndAuthority"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RoleId"
+            }
+          }
+        }
+      }
+    },
     "/bi/company/product/": {
       "get": {
         "tags": [
@@ -87,6 +388,108 @@
             "description": "success",
             "schema": {
               "$ref": "#/definitions/CompanyProductList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/product/template/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "获取产品模板",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "product_template_detail",
+            "description": "产品模板明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/ProductTemplateDetail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/TemplateList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/list/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "取公司列表",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "query_company_conditions",
+            "description": "公司条件查询",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/QueryCompanyCondition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/QueryCompanyResult"
+            }
+          }
+        }
+      }
+    },
+    "/bi/company/purchased/": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "取公司列表已购产品",
+        "description": "company_id必填,order_by选填,direction和排序字段一起出现 asc或desc",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "query_purchased_condition",
+            "description": "公司已购产品查询条件",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/QueryPurchasedCondition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/QueryPurchasedResult"
             }
           }
         }
@@ -123,6 +526,67 @@
         }
       }
     },
+    "/bi/company/modify/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "修改公司",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "mdify_company_detail",
+            "description": "修改公司明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MdifyCompanyDetail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/company/purchased/upgrade/": {
+      "post": {
+        "tags": [
+          "company"
+        ],
+        "summary": "升级公司产品",
+        "description": "后续开发",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "upgrade_company_purchased",
+            "description": "升级产品明细",
+            "schema": {
+              "$ref": "#/definitions/UpgradeCompanyPurchased"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
     "/bi/user/product/": {
       "get": {
         "tags": [
@@ -138,6 +602,303 @@
             "description": "success",
             "schema": {
               "$ref": "#/definitions/UserProductList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/user/list/": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取用户列表",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "query_user_condition",
+            "description": "查询用户列表条件",
+            "schema": {
+              "$ref": "#/definitions/QueryUserCondition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/QueryUserResult"
+            }
+          }
+        }
+      }
+    },
+    "/bi/user/email/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "修改用户邮箱",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "modify_email_detail",
+            "description": "更用户改邮箱明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ModifyEmailDetail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/user/status/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "修改用户状态",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user_detail",
+            "description": "用户明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserList"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/ModifyUserStatus"
+            }
+          }
+        }
+      }
+    },
+    "/bi/user/password/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": " ",
+        "summary": "修改用户密码",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user_detail",
+            "description": "修改密码明细",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ModifyUserPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/reg-code/list/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取注册码列表",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user_detail",
+            "description": "修改密码明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/QueryRegcodeCondition"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RegcodeList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/reg-code/summary/": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取注册码统计",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RegcodeSummaryList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/reg-code/copy/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "复制注册码",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/RegCode"
+            }
+          }
+        }
+      }
+    },
+    "/bi/reg-code/download/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "下载注册码",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/CodeList"
+            }
+          }
+        }
+      }
+    },
+    "/bi/reg-code/generate/": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "生成注册码",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user_detail",
+            "description": "修改密码明细",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GenerateRegcodeList"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/bi/user/purchased/": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "获取已购产品",
+        "description": " ",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "query_user_purchased",
+            "description": "用户已购买查询条件",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/QueryUserPurchased"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/UserPurchasedResult"
             }
           }
         }
@@ -186,6 +947,46 @@
         }
       }
     },
+    "MdifyCompanyDetail": {
+      "type": "object",
+      "properties": {
+        "company_name": {
+          "type": "string",
+          "description": "公司名称"
+        },
+        "abbr_name": {
+          "type": "string",
+          "description": "公司简称"
+        },
+        "user_name": {
+          "type": "string",
+          "description": "管理员用户名"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "管理员电邮"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `0` - '即将上线'\n * `1` - '正常'\n * `2` - '已下线'\n",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ]
+        }
+      }
+    },
+    "ProductId": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        }
+      }
+    },
     "CompanyPurchased": {
       "type": "object",
       "properties": {
@@ -200,6 +1001,199 @@
         "days": {
           "type": "integer",
           "description": "购买天数"
+        }
+      }
+    },
+    "ProductRoleTypeList": {
+      "type": "object",
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "description": "角色类型列表",
+          "items": {
+            "$ref": "#/definitions/RoleTypeList"
+          }
+        }
+      }
+    },
+    "RoleId": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "integer",
+          "description": "角色编号"
+        }
+      }
+    },
+    "RoleTypeList": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "产品名称"
+        },
+        "role_type_list": {
+          "type": "array",
+          "description": "角色类型列表",
+          "items": {
+            "$ref": "#/definitions/RoleType"
+          }
+        }
+      }
+    },
+    "RoleType": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        }
+      }
+    },
+    "RoleList": {
+      "type": "object",
+      "properties": {
+        "role_list": {
+          "type": "array",
+          "description": "角色列表",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "integer",
+          "description": "角色编号"
+        },
+        "role_name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        },
+        "user_count": {
+          "type": "integer",
+          "description": "用户数量"
+        }
+      }
+    },
+    "AuthList": {
+      "type": "object",
+      "properties": {
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        },
+        "role_name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "auth_list": {
+          "type": "array",
+          "description": "权限列表",
+          "items": {
+            "$ref": "#/definitions/Authority"
+          }
+        }
+      }
+    },
+    "Authority": {
+      "type": "object",
+      "properties": {
+        "auth_id": {
+          "type": "integer",
+          "description": "权限编号"
+        },
+        "name": {
+          "type": "string",
+          "description": "权限名称"
+        },
+        "level": {
+          "type": "string",
+          "description": "角色级别"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `0` - '即将上线'\n * `1` - '正常'\n * `2` - '已下线'\n",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "sub_list": {
+          "type": "array",
+          "description": "下级权限列表",
+          "items": {
+            "$ref": "#/definitions/AuthList"
+          }
+        }
+      }
+    },
+    "RoleAndAuthority": {
+      "type": "object",
+      "properties": {
+        "role_id": {
+          "type": "integer",
+          "description": "角色编号"
+        },
+        "role_name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        },
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "auth_list": {
+          "type": "array",
+          "description": "权限列表",
+          "items": {
+            "$ref": "#/definitions/RoleAuthorityDetail"
+          }
+        }
+      }
+    },
+    "RoleAuthorityDetail": {
+      "type": "object",
+      "properties": {
+        "auth_id": {
+          "type": "integer",
+          "description": "权限编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `0` - '即将上线'\n * `1` - '正常'\n * `2` - '已下线'\n",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "sub_list": {
+          "type": "array",
+          "description": "下级权限列表",
+          "items": {
+            "$ref": "#/definitions/RoleAuthorityDetail"
+          }
         }
       }
     },
@@ -269,6 +1263,696 @@
               "VIEWER"
             ]
           }
+        }
+      }
+    },
+    "TemplateId": {
+      "type": "object",
+      "properties": {
+        "template_id": {
+          "type": "integer",
+          "description": "角色编号"
+        }
+      }
+    },
+    "ProductTemplate": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "template_id": {
+          "type": "integer",
+          "description": "模板编号"
+        },
+        "template_name": {
+          "type": "string",
+          "description": "公司模板名称"
+        },
+        "max_processes": {
+          "type": "integer",
+          "description": "最大进程数"
+        },
+        "max_capacity": {
+          "type": "integer",
+          "description": "最大容量(MB)"
+        },
+        "max_projects": {
+          "type": "integer",
+          "description": "最大项目数"
+        },
+        "role_list": {
+          "type": "array",
+          "description": "角色列表",
+          "items": {
+            "$ref": "#/definitions/RoleList"
+          }
+        }
+      }
+    },
+    "ProductTemplateDetail": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起始偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "条目数量"
+        }
+      }
+    },
+    "TemplateList": {
+      "type": "object",
+      "properties": {
+        "template_list": {
+          "type": "array",
+          "description": "模板列表",
+          "items": {
+            "$ref": "#/definitions/ProductTemplate"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "模板总数"
+        }
+      }
+    },
+    "QueryCompanyCondition": {
+      "properties": {
+        "keywprd": {
+          "type": "string",
+          "description": "查询关键字"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起始偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "条目数量"
+        }
+      }
+    },
+    "QueryCompanyResult": {
+      "properties": {
+        "company_list": {
+          "type": "array",
+          "description": "公司列表",
+          "items": {
+            "$ref": "#/definitions/QueryCompanyDetail"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "项目总数"
+        }
+      }
+    },
+    "QueryCompanyDetail": {
+      "properties": {
+        "company_id": {
+          "type": "integer",
+          "description": "公司编号"
+        },
+        "company_name": {
+          "type": "string",
+          "description": "公司名称"
+        },
+        "abbr_name": {
+          "type": "string",
+          "description": "公司简称"
+        },
+        "user_name": {
+          "type": "string",
+          "description": "管理员用户名"
+        },
+        "email": {
+          "type": "string",
+          "description": "管理员电邮"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `0` - '即将上线'\n * `1` - '正常'\n * `2` - '已下线'\n",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ]
+        },
+        "insert_time": {
+          "type": "string",
+          "description": "创建时间"
+        }
+      }
+    },
+    "QueryPurchasedCondition": {
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "description": "公司编号"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起始偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "条目数量"
+        }
+      }
+    },
+    "QueryPurchasedResult": {
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "description": "产品列表",
+          "items": {
+            "$ref": "#/definitions/QueryPurchasedDetail"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "项目总数"
+        }
+      }
+    },
+    "QueryPurchasedDetail": {
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "产品名称"
+        },
+        "template_id": {
+          "type": "integer",
+          "description": "模板编号"
+        },
+        "template_name": {
+          "type": "string",
+          "description": "模板名称"
+        },
+        "max_processes": {
+          "type": "integer",
+          "description": "最大进程数"
+        },
+        "max_capacity": {
+          "type": "integer",
+          "description": "最大容量(MB)"
+        },
+        "max_projects": {
+          "type": "integer",
+          "description": "最大项目数"
+        },
+        "project_limit": {
+          "type": "integer",
+          "description": "项目大小限制(单位为MB)"
+        },
+        "days": {
+          "type": "integer",
+          "description": "购买天数"
+        },
+        "expired_time": {
+          "type": "string",
+          "description": "失效时间"
+        },
+        "role_list": {
+          "type": "array",
+          "description": "角色列表",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        }
+      }
+    },
+    "UpgradeCompanyPurchased": {
+      "type": "object",
+      "properties": {
+        "company_id": {
+          "type": "integer",
+          "description": "公司编号"
+        },
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "template_id": {
+          "type": "integer",
+          "description": "模板编号"
+        },
+        "days": {
+          "type": "integer",
+          "description": "购买天数"
+        }
+      }
+    },
+    "QueryUserCondition": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "role_type": {
+          "type": "array",
+          "description": "角色类型",
+          "items": {
+            "type": "string",
+            "enum": [
+              "CREATOR",
+              "EXPLORER",
+              "VIEWER"
+            ]
+          }
+        },
+        "keyword": {
+          "type": "string",
+          "description": "关键字"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起始偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "返回数量"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        }
+      }
+    },
+    "QueryUserResult": {
+      "type": "object",
+      "properties": {
+        "user_list": {
+          "type": "array",
+          "description": "用户列表",
+          "items": {
+            "$ref": "#/definitions/UserList"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "用户总数"
+        }
+      }
+    },
+    "UserList": {
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "description": "用户编号"
+        },
+        "role_type": {
+          "type": "array",
+          "description": "角色类型",
+          "items": {
+            "type": "string",
+            "enum": [
+              "CREATOR",
+              "EXPLORER",
+              "VIEWER"
+            ]
+          }
+        },
+        "user_name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "email": {
+          "type": "string",
+          "description": "用户邮箱"
+        },
+        "reg_time": {
+          "type": "string",
+          "description": "注册时间"
+        },
+        "status": {
+          "type": "array",
+          "description": "状态",
+          "items": {
+            "type": "string",
+            "enum": [
+              "0-待激活",
+              "1-启用",
+              "2-停用",
+              "9-禁用"
+            ]
+          }
+        }
+      }
+    },
+    "ModifyEmailDetail": {
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "description": "用户编号"
+        },
+        "user_name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "email": {
+          "type": "string",
+          "description": "新邮箱"
+        }
+      }
+    },
+    "ModifyUserStatus": {
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "description": "用户编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态:\n * `1` - '停用'\n * `2` - '启用'\n",
+          "enum": [
+            "1",
+            "2"
+          ]
+        }
+      }
+    },
+    "ModifyUserPassword": {
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "用户密码"
+        },
+        "user_id": {
+          "type": "integer",
+          "description": "用户编号"
+        }
+      }
+    },
+    "QueryRegcodeCondition": {
+      "properties": {
+        "status": {
+          "type": "array",
+          "description": "状态",
+          "items": {
+            "type": "string",
+            "enum": [
+              "UNUNSED-未注册/未使用",
+              "EXPORTED-待注册/已导出",
+              "USED-已注册"
+            ]
+          }
+        },
+        "product_list": {
+          "type": "array",
+          "description": "产品列表",
+          "items": {
+            "$ref": "#/definitions/RegcodeProductList"
+          }
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起点偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "返回数量"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        }
+      }
+    },
+    "RegcodeProductList": {
+      "properties": {
+        "prodict_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        }
+      }
+    },
+    "RegcodeList": {
+      "properties": {
+        "code_list": {
+          "type": "array",
+          "description": "注册码列表",
+          "items": {
+            "$ref": "#/definitions/RegCodeDetail"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "用户总数"
+        }
+      }
+    },
+    "RegCodeDetail": {
+      "properties": {
+        "reg_code": {
+          "type": "integer",
+          "description": "注册码"
+        },
+        "exported_time": {
+          "type": "string",
+          "description": "注册时间"
+        },
+        "user_name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "reg_time": {
+          "type": "integer",
+          "description": "注册时间"
+        },
+        "status": {
+          "type": "array",
+          "description": "状态",
+          "items": {
+            "type": "string",
+            "enum": [
+              "UNUNSED-未注册/未使用",
+              "EXPORTED-待注册/已导出",
+              "USED-已注册"
+            ]
+          }
+        },
+        "prduct_list": {
+          "type": "array",
+          "description": "产品列表",
+          "items": {
+            "$ref": "#/definitions/RegcodeProductList"
+          }
+        }
+      }
+    },
+    "RegcodeSummaryList": {
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "description": "产品列表",
+          "items": {
+            "$ref": "#/definitions/RegcodeSummary"
+          }
+        }
+      }
+    },
+    "RegcodeSummary": {
+      "properties": {
+        "product_list": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "role_type": {
+          "type": "string",
+          "description": "角色类型"
+        },
+        "user_count": {
+          "type": "integer",
+          "description": "用户数量"
+        },
+        "used_count": {
+          "type": "integer",
+          "description": "已使用数量"
+        }
+      }
+    },
+    "RegCode": {
+      "properties": {
+        "reg_code": {
+          "type": "integer",
+          "description": "注册码"
+        }
+      }
+    },
+    "CodeList": {
+      "properties": {
+        "reg_code_list": {
+          "type": "array",
+          "description": "注册码列表",
+          "items": {
+            "$ref": "#/definitions/RegCode"
+          }
+        }
+      }
+    },
+    "GenerateRegcodeList": {
+      "properties": {
+        "code_list": {
+          "type": "array",
+          "description": "注册码列表",
+          "items": {
+            "$ref": "#/definitions/GenerateRegcode"
+          }
+        }
+      }
+    },
+    "GenerateRegcode": {
+      "properties": {
+        "user_count": {
+          "type": "integer",
+          "description": "注册码数量"
+        },
+        "role_list": {
+          "type": "array",
+          "description": "角色类型列表",
+          "items": {
+            "$ref": "#/definitions/RoleType"
+          }
+        }
+      }
+    },
+    "QueryUserPurchased": {
+      "properties": {
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "direction": {
+          "type": "string",
+          "description": "排序方向"
+        },
+        "offset": {
+          "type": "integer",
+          "description": "起始偏移"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "条目数量"
+        }
+      }
+    },
+    "UserPurchasedResult": {
+      "properties": {
+        "product_list": {
+          "type": "array",
+          "description": "产品列表",
+          "items": {
+            "$ref": "#/definitions/UserPurchasedDetail"
+          }
+        },
+        "total_num": {
+          "type": "integer",
+          "description": "项目总数"
+        }
+      }
+    },
+    "UserPurchasedDetail": {
+      "properties": {
+        "product_id": {
+          "type": "integer",
+          "description": "产品编号"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "产品名称"
+        },
+        "max_processes": {
+          "type": "integer",
+          "description": "最大进程数"
+        },
+        "max_capacity": {
+          "type": "integer",
+          "description": "最大容量(MB)"
+        },
+        "max_projects": {
+          "type": "integer",
+          "description": "最大项目数"
+        },
+        "project_limit": {
+          "type": "integer",
+          "description": "项目大小限制(单位为MB)"
+        },
+        "days": {
+          "type": "integer",
+          "description": "购买天数"
+        },
+        "expired_time": {
+          "type": "string",
+          "description": "失效时间"
+        },
+        "role_list": {
+          "type": "array",
+          "description": "角色列表",
+          "items": {
+            "$ref": "#/definitions/PurchasedRole"
+          }
+        }
+      }
+    },
+    "PurchasedRole": {
+      "properties": {
+        "role_type": {
+          "type": "string",
+          "description": "用户角色"
+        },
+        "user_count": {
+          "type": "integer",
+          "description": "用户数量"
         }
       }
     }
